@@ -12,13 +12,15 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^7.5.0"
+    "mongoose": "^7.5.0",
+    "uid": "^2.0.2",
+    "valid-url": "^1.0.9"
   },
   "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
   "engines": {
-    "node": "14.21.3"
+    "node": "20.5.1"
   }
 }
