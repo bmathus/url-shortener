@@ -49,9 +49,7 @@ router.get('/api/shorturl/:shorturl', async (req, res) => {
   const record = await Model.findOne({ short_url: req.params.shorturl });
 
   if (!record) {
-    return res.json({
-      message: 'No short URL found for the given input',
-    });
+    return res.json({ error: 'invalid url' });
   }
 
   res.redirect(record.original_url);
