@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const router = require('./routes/routes');
@@ -21,6 +22,7 @@ database.once('connected', () => {
 const app = express();
 app.use(cors({ optionsSuccessStatus: 200 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use(router);
 
