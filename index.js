@@ -1,13 +1,13 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
 const app = express();
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+const cors = require('cors');
+app.use(cors({ optionsSuccessStatus: 200 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -20,8 +20,9 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 
-app.listen(port, function () {
-  console.log(`Listening on port ${port}`);
+// listen for requests :)
+var listener = app.listen(process.env.PORT || 3000, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
 });
 
 module.exports = app;
