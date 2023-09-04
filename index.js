@@ -1,24 +1,17 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
-const app = express();
+const router = require('./routes/routes');
+
+//Mango connection
 
 // Basic Configuration
-const port = process.env.PORT || 3000;
-
-const cors = require('cors');
+const app = express();
 app.use(cors({ optionsSuccessStatus: 200 }));
-
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
-
-// Your first API endpoint
-app.get('/api/hello', function (req, res) {
-  res.json({ greeting: 'hello API' });
-});
+app.use(router);
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 3000, function () {
