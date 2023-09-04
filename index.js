@@ -6,16 +6,16 @@ const path = require('path');
 const router = require('./routes/routes');
 
 //Mango connection
-// mongoose.connect(process.env.DATABASE_URL);
-// const database = mongoose.connection;
+mongoose.connect(process.env.DATABASE_URL);
+const database = mongoose.connection;
 
-// database.on('error', (error) => {
-//   console.log(error);
-// });
+database.on('error', (error) => {
+  console.log(error);
+});
 
-// database.once('connected', () => {
-//   console.log('Database Connected');
-// });
+database.once('connected', () => {
+  console.log('Database Connected');
+});
 
 // Basic Configuration
 const app = express();
