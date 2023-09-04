@@ -30,12 +30,12 @@ router.post('/api/shorturl', async (req, res) => {
 
     try {
       const recordToSave = await newRecord.save();
-      return res.status(200).json({
+      return res.json({
         original_url: recordToSave.original_url,
         short_url: recordToSave.short_url,
       });
     } catch (error) {
-      return res.status(400).json({ message: error.message });
+      return res.json({ message: error.message });
     }
   }
 
